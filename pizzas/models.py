@@ -7,3 +7,9 @@ class Pizza(models.Model):
     def __str__(self):
         return self.text
         
+class Topping(models.Model):
+    pizza = models.ForeignKey(Pizza, on_delete=models.CASCADE)
+    name = models.TextField()
+
+    def __str__(self):
+        return f"{self.name[:50]}..."
