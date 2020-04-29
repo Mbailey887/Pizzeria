@@ -11,10 +11,10 @@ pizzas = Pizza.objects.all()
 for pizza in pizzas:
     print(pizza.id, pizza)
 
-t = Pizza.objects.get(id=1)
+t = Pizza.objects.get(id=2)
 print(t.text)
 
-name = t.name_set.all()
+names = t.topping_set.all()
 
-for name in name:
+for name in names:
     print(name)
