@@ -4,14 +4,14 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "pizzeria.settings")
 import django
 django.setup()
 
-from pizzas.models import Pizza
+from pizzas.models import PizzaName
 
-pizzas = Pizza.objects.all()
+pizzas = PizzaName.objects.all()
 
 for pizza in pizzas:
     print(pizza.id, pizza)
 
-t = Pizza.objects.get(id=2)
+t = PizzaName.objects.get(id=2)
 print(t.text)
 
 names = t.topping_set.all()
