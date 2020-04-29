@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
 from .models import PizzaName
-from .forms import PizzaNameForm
+from .forms import PizzaNameForm, ToppingForm
 
 def index(request):
     """The home page for Pizzeria."""
@@ -32,3 +32,21 @@ def new_pizzaname(request):
 
     context = {'form': form}
     return render(request, 'pizzas/new_pizzaname.html', context) 
+
+def new_topping(request, pizzaname_id):
+    """Add a new topping for a particular pizza."""
+    pizzaname = PizzaName.objects.get(id=pizzaname_id)
+
+    if request.method != 'POST':
+        form = ToppingForm()
+    else:
+        form = ToppingForm(data=request.POST)
+        if form.is_valid():
+            new_topping = form.save(commit=False)
+            new_topping.pizzaname = pizzaname
+            new_topping.save()
+            return redirect('pizzas:pizzaname', pizzaname_id=pizzaname_id)
+
+    context = {'pizzaname': pizzaname, 'form': form}
+    return render(request, 'pizzas/new_topping.html', context)
+    

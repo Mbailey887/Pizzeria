@@ -5,6 +5,10 @@
   <p>Pizza Name: {{pizzaname}}</p>
 
   <p>Toppings:</p>
+  <p>
+    <a href="{% url 'pizzas:new_topping' pizzaname.id %}">Add Topping</a>
+  </p>
+  
   <ul>
   {% for topping in toppings %}
     <li>
