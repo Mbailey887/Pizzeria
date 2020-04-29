@@ -18,3 +18,7 @@ names = t.topping_set.all()
 
 for name in names:
     print(name)
+comments = t.comment_set.all()
+
+for comment in comments:
+    print(comment)

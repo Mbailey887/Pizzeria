@@ -17,4 +17,6 @@ urlpatterns = [
     path('new_pizzaname', views.new_pizzaname, name='new_pizzaname'),
     # Page for adding new toppings
     path('new_topping/<int:pizzaname_id>/', views.new_topping, name='new_topping'),
+    # Page for adding new comments
+    path('new_comment/<int:pizzaname_id>/', views.new_comment, name='new_comment'),
 ]
